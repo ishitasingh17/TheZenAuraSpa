@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.welcome-screen {
+  min-height: 100vh;
+  background-image:
+    linear-gradient(rgba(18, 18, 18, 0.45), rgba(18, 18, 18, 0.45)),
+    url("/za-spa.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.welcome-spa {
+  max-width: 650px;
+  margin-left: 90px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+.welcome-label {
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #d8c6a2;
+  margin-bottom: 18px;
+}
+
+.spa-title {
+  font-family: "Playfair Display", serif;
+  font-size: 78px;
+  line-height: 0.95;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 28px;
+}
+
+.spa-subtitle {
+  color: #d8c6a2;
+}
+
+.features {
+  display: flex;
+  gap: 40px;
+
+  margin-bottom: 40px;
+
+  flex-wrap: wrap;
+}
+
+.features div {
+  font-size: 18px;
+  color: white;
+}
+
+.spa-description {
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 550px;
+  color: rgba(255, 255, 255, 0.853);
+  margin-bottom: 50px;
+}
+
+.trust-info {
+  display: flex;
+  gap: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+}
+
+.start-consultation {
+  background-color: #7a9b85;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-family: "Scaver", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(122, 155, 133, 0.25);
+  margin: 10px 0 50px;
+  width: fit-content;
+}
+
+.start-consultation:hover {
+  background: #6d8f77;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(122, 155, 133, 0.35);
+}
+
+.start-consultation:active {
+  transform: translateY(0);
+}
+
+.start-consultation span {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.start-consultation:hover span {
+  transform: translateX(4px);
+}
