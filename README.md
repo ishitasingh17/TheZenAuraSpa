@@ -1,4 +1,4 @@
-# 🌿 The Zen Aura Spa Consultation App
+# 🌿 The Zen Aura Spa Digital Consultation System
 
 ## Overview
 
