@@ -69,16 +69,12 @@
 .continue-button {
   margin-top: 40px;
   padding: 16px 36px;
-
   background-color: #7a9b85;
   color: white;
-
   border: none;
   border-radius: 9999px;
-
   font-size: 18px;
   font-weight: 600;
-
   cursor: pointer;
   transition: 0.2s;
 }
@@ -91,4 +87,10 @@
   background-color: #cfcfcf;
   cursor: not-allowed;
   opacity: 0.7;
+}
+
+.selected {
+  border: 2px solid #7a9b85;
+  background-color: #eef6f0;
+  transform: scale(1.02);
 }

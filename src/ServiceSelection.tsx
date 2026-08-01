@@ -1,4 +1,5 @@
 import "./ServiceSelection.css";
+
 import {
   FaSpa,
   FaLaptop,
@@ -30,12 +31,11 @@ function ServiceSelection({
     { icon: <IoBody />, name: "Pain Relief" },
     { icon: <FaBrain />, name: "Stress" },
     { icon: <FaLaptop />, name: "Long Working Hours" },
-    { icon: <FaDumbbell />, name: "Gym Recovery" },
     { icon: <FaPlane />, name: "Travel Fatigue" },
     { icon: <FaMoon />, name: "Poor Sleep" },
     { icon: <FaHeart />, name: "Quality Time Together" },
     { icon: <BsStars />, name: "Beauty" },
-    { icon: <FaGift />, name: "Gift Experience" },
+    { icon: <FaGift />, name: "Signature Therapies" },
   ];
 
   return (
@@ -58,14 +58,21 @@ function ServiceSelection({
             onClick={() => setSelectedReason(reason.name)}
           >
             <div className="reason-icon">{reason.icon}</div>
-            <p className="reasons-name">{reason.name}</p>
+            <p className="reason-name">{reason.name}</p>
           </button>
         ))}
       </div>
+
       <button
         className="continue-button"
         disabled={!selectedReason}
-        onClick={() => setScreen("recommendations")}
+        onClick={() => {
+          if (selectedReason === "Beauty") {
+            setScreen("beauty");
+          } else {
+            setScreen("recommendations");
+          }
+        }}
       >
         Continue →
       </button>

@@ -1,0 +1,118 @@
+.addons-container {
+  min-height: 100vh;
+  background-color: #f8f6f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.addons-container h1 {
+  font-size: 2.2rem;
+  color: #2f2f2f;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.addons-subtitle {
+  max-width: 600px;
+  text-align: center;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.addons-list {
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.addon-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.addon-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.addon-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  cursor: pointer;
+}
+
+.addon-label input[type="checkbox"] {
+  margin-top: 6px;
+  transform: scale(1.3);
+  accent-color: #b78d52;
+}
+
+.addon-content {
+  flex: 1;
+}
+
+.addon-content h3 {
+  margin: 0 0 8px;
+  color: #2f2f2f;
+  font-size: 1.2rem;
+}
+
+.addon-content p {
+  margin: 0 0 12px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.addon-content strong {
+  color: #b78d52;
+  font-size: 1.05rem;
+}
+
+.button-row {
+  width: 100%;
+  max-width: 750px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.skip-button,
+.continue-button {
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.skip-button {
+  background: white;
+  color: #666;
+  border: 1px solid #ddd;
+}
+
+.skip-button:hover {
+  background: #f2f2f2;
+}
+
+.continue-button {
+  background: #b78d52;
+  color: white;
+}
+
+.continue-button:hover {
+  background: #9d7540;
+}
