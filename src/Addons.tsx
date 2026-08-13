@@ -1,4 +1,4 @@
-import "./AddOns.css";
+import "./Addons.css";
 
 type AddOnsProps = {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
