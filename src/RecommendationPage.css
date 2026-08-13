@@ -80,3 +80,40 @@
 .pricing-table th {
   font-weight: 600;
 }
+
+.duration-selector {
+  margin: 20px 0;
+}
+
+.duration-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2f3d34;
+}
+
+.duration-selector select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  font-size: 16px;
+  background: white;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.back-button,
+.continue-button {
+  width: 280px;
+  height: 72px;
+
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+}

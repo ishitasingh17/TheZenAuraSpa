@@ -55,7 +55,7 @@
 .addon-label input[type="checkbox"] {
   margin-top: 6px;
   transform: scale(1.3);
-  accent-color: #b78d52;
+  accent-color: #7a9b85;
 }
 
 .addon-content {
@@ -75,44 +75,118 @@
 }
 
 .addon-content strong {
-  color: #b78d52;
-  font-size: 1.05rem;
+  color: #587963;
+}
+
+.addons-continue-button {
+  width: 280px;
+  height: 72px;
+
+  background: #7a9b85;
+  color: white;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.addons-continue-button:hover {
+  background: #6b8c77;
+  transform: translateY(-2px);
 }
 
 .button-row {
   width: 100%;
   max-width: 750px;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 24px;
+
   margin-top: 40px;
 }
 
-.skip-button,
-.continue-button {
-  padding: 14px 32px;
-  border-radius: 30px;
-  border: none;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.25s ease;
-}
+.addons-back-button {
+  width: 280px;
+  height: 72px;
 
-.skip-button {
+  border: 2px solid #7a9b85;
   background: white;
-  color: #666;
-  border: 1px solid #ddd;
+  color: #2f3d34;
+
+  border-radius: 999px;
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.skip-button:hover {
-  background: #f2f2f2;
+.addons-back-button:hover {
+  background: #eef6f0;
 }
 
-.continue-button {
-  background: #b78d52;
-  color: white;
+.facial-choice {
+  display: flex;
+  gap: 35px;
+  margin-top: 20px;
 }
 
-.continue-button:hover {
-  background: #9d7540;
+.facial-choice label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.pilgrim-logo {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.facial-choice {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.facial-choice label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 24px;
+
+  border: 2px solid #d9d9d9;
+  border-radius: 999px;
+
+  background: white;
+  color: #2f2f2f;
+
+  font-size: 17px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.facial-choice label:hover {
+  border-color: #7a9b85;
+  background: #f5f9f6;
+}
+
+.facial-choice input[type="radio"] {
+  accent-color: #7a9b85;
+  width: 18px;
+  height: 18px;
 }

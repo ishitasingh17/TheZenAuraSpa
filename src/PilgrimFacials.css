@@ -1,0 +1,429 @@
+/* ================================
+   MAIN PAGE
+================================ */
+
+.pilgrim-container {
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  padding: 42px 70px 50px;
+
+  background: #f7f5f1;
+
+  color: #303a34;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.pilgrim-container > h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 38px;
+
+  font-weight: 500;
+
+  letter-spacing: -0.5px;
+
+  color: #304238;
+}
+
+.pilgrim-intro {
+  text-align: center;
+  font-size: 20px;
+  color: #666;
+  margin: 8px auto 18px;
+}
+
+/* ================================
+   PILGRIM LOGO
+================================ */
+
+.pilgrim-logo {
+  display: block;
+  width: 270px;
+  max-width: 70%;
+  height: auto;
+  margin: 10px auto 25px;
+}
+
+/* ================================
+   PRICE INFORMATION
+================================ */
+
+.membership-price-note {
+  text-align: center;
+  color: #6f927c;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 10px auto 6px;
+}
+
+.tax-note {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  font-style: italic;
+  margin: 0;
+}
+
+.pilgrim-divider {
+  width: 70%;
+  max-width: 750px;
+  height: 1px;
+  background: #e5e0d8;
+  margin: 42px auto 35px;
+}
+
+/* ================================
+   FACIAL QUESTION
+================================ */
+
+.pilgrim-container > h2 {
+  margin: 0 auto 20px;
+
+  text-align: center;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 27px;
+
+  font-weight: 500;
+
+  color: #304238;
+}
+
+.facial-choice {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 10px;
+}
+/* ================================
+   YES / NO BUTTONS
+================================ */
+
+.facial-choice-button {
+  min-width: 240px;
+  padding: 15px 28px;
+
+  border: 2px solid #8aaa97;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #4f705d;
+
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.facial-choice-button:hover {
+  background: #f1f6f3;
+  transform: translateY(-2px);
+}
+
+.facial-choice-button.selected {
+  background: #7a9b85;
+  border-color: #7a9b85;
+  color: white;
+
+  box-shadow: 0 6px 18px rgba(122, 155, 133, 0.25);
+}
+
+/* ================================
+   FACIAL SECTION
+================================ */
+
+.facial-options {
+  width: min(1050px, 100%);
+  margin-top: 35px;
+  margin: 0 auto;
+}
+
+.facial-options > h2 {
+  margin: 10px 0 22px;
+
+  text-align: center;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 25px;
+
+  font-weight: 500;
+
+  color: #304238;
+}
+
+/* ================================
+   FACIAL CARD
+================================ */
+
+.facial-card {
+  display: grid;
+
+  grid-template-columns: 24px 210px 1fr;
+
+  gap: 20px;
+
+  align-items: start;
+
+  margin-bottom: 18px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1.5px solid #e5e0d8;
+
+  border-radius: 18px;
+
+  box-shadow: 0 5px 20px rgba(50, 60, 55, 0.06);
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.facial-card:hover {
+  transform: translateY(-2px);
+
+  border-color: #a4b7aa;
+
+  box-shadow: 0 9px 25px rgba(50, 60, 55, 0.1);
+}
+
+.facial-card.selected {
+  border: 2px solid #789984;
+
+  background: #fcfdfc;
+
+  box-shadow: 0 8px 25px rgba(85, 115, 95, 0.12);
+}
+
+/* ================================
+   RADIO
+================================ */
+
+.facial-card input[type="radio"] {
+  width: 19px;
+
+  height: 19px;
+
+  margin-top: 7px;
+
+  accent-color: #789984;
+
+  cursor: pointer;
+}
+
+/* ================================
+   FACIAL IMAGE
+================================ */
+
+.facial-card-image {
+  display: block;
+
+  width: 210px;
+
+  height: 145px;
+
+  object-fit: cover;
+
+  border-radius: 13px;
+
+  background: #eeeae4;
+}
+
+/* ================================
+   FACIAL CONTENT
+================================ */
+
+.facial-card-content {
+  min-width: 0;
+}
+
+.facial-card-content h3 {
+  margin: 0 0 7px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 22px;
+
+  font-weight: 600;
+
+  color: #304238;
+}
+
+.facial-card-content > p {
+  margin: 6px 0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #666;
+}
+
+/* ================================
+   PRICING
+================================ */
+
+.facial-pricing {
+  margin-top: 13px;
+
+  padding-top: 7px;
+
+  border-top: 1px solid #ebe7e1;
+}
+
+.facial-price-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.facial-price-row strong {
+  font-size: 14px;
+
+  color: #444;
+}
+
+.facial-price-row.current-membership {
+  background: #edf4ef;
+
+  color: #456352;
+
+  font-weight: 600;
+}
+
+.facial-price-row.current-membership strong {
+  color: #6f927c;
+
+  font-size: 15px;
+}
+
+.facial-question {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #304438;
+  margin: 0 auto 28px;
+}
+
+/* ================================
+   BOTTOM BUTTONS
+================================ */
+
+.pilgrim-button-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+
+  margin-top: 100px;
+  padding-bottom: 30px;
+}
+
+.pilgrim-back-button,
+.pilgrim-continue-button {
+  min-width: 180px;
+
+  padding: 12px 25px;
+
+  border-radius: 28px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.pilgrim-back-button {
+  background: white;
+
+  border: 1.5px solid #789984;
+
+  color: #557461;
+}
+
+.pilgrim-back-button:hover {
+  background: #eef4f0;
+}
+
+.pilgrim-continue-button {
+  background: #789984;
+
+  border: 1.5px solid #789984;
+
+  color: white;
+}
+
+.pilgrim-continue-button:hover {
+  background: #688a74;
+}
+
+.pilgrim-continue-button:disabled {
+  background: #c9d3cd;
+
+  border-color: #c9d3cd;
+
+  cursor: not-allowed;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 850px) {
+  .pilgrim-container {
+    padding: 30px 25px 40px;
+  }
+
+  .pilgrim-container > h1 {
+    font-size: 32px;
+  }
+
+  .facial-card {
+    grid-template-columns: 22px 170px 1fr;
+
+    gap: 15px;
+
+    padding: 16px;
+  }
+
+  .facial-card-image {
+    width: 170px;
+
+    height: 130px;
+  }
+
+  .facial-card-content h3 {
+    font-size: 19px;
+  }
+}

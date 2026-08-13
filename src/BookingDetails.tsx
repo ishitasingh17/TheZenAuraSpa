@@ -2,35 +2,37 @@ import "./BookingDetails.css";
 
 type BookingDetailsProps = {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
+
   booking: {
     treatment: string;
     duration: string;
     membership: string;
+
+    pricing: {
+      duration: string;
+      guest: number;
+      sapphire: number;
+      emeraldRuby: number;
+    }[];
+
     name: string;
-    phone: string;
-    age: string;
-    gender: string;
-    firstVisit: string;
-    birthday: string;
-    occupation: string;
-    therapist: string;
-    pressure: string;
     addOns: string[];
   };
+
   setBooking: React.Dispatch<
     React.SetStateAction<{
       treatment: string;
       duration: string;
       membership: string;
+
+      pricing: {
+        duration: string;
+        guest: number;
+        sapphire: number;
+        emeraldRuby: number;
+      }[];
+
       name: string;
-      phone: string;
-      age: string;
-      gender: string;
-      firstVisit: string;
-      birthday: string;
-      occupation: string;
-      therapist: string;
-      pressure: string;
       addOns: string[];
     }>
   >;
@@ -46,12 +48,13 @@ function BookingDetails({
       <h1>Let's Reserve Your Experience</h1>
 
       <p className="booking-subtitle">
-        Please enter your details so our reception team can prepare your
-        booking.
+        Tell us a little about yourself so we can personalize your spa
+        experience.
       </p>
 
       <div className="booking-form">
         <label>Full Name *</label>
+
         <input
           className="booking-input"
           type="text"
@@ -65,150 +68,71 @@ function BookingDetails({
           }
         />
 
-        <label>Phone Number *</label>
-        <input
-          className="booking-input"
-          type="tel"
-          placeholder="+91 xx xxx xxxx"
-          value={booking.phone}
-          onChange={(e) =>
-            setBooking({
-              ...booking,
-              phone: e.target.value,
-            })
-          }
-        />
-
-        <label>Age</label>
-        <input
-          className="booking-input"
-          type="number"
-          placeholder="Enter your age"
-          value={booking.age}
-          onChange={(e) =>
-            setBooking({
-              ...booking,
-              age: e.target.value,
-            })
-          }
-        />
-
-        <label>Gender</label>
+        <label>Membership</label>
 
         <div className="booking-radio-group">
           <label className="booking-radio">
             <input
               type="radio"
-              value="Male"
-              checked={booking.gender === "Male"}
+              value="Guest"
+              checked={booking.membership === "Guest"}
               onChange={(e) =>
                 setBooking({
                   ...booking,
-                  gender: e.target.value,
+                  membership: e.target.value,
                 })
               }
             />
-            Male
+            Guest
           </label>
 
           <label className="booking-radio">
             <input
               type="radio"
-              value="Female"
-              checked={booking.gender === "Female"}
+              value="Sapphire"
+              checked={booking.membership === "Sapphire"}
               onChange={(e) =>
                 setBooking({
                   ...booking,
-                  gender: e.target.value,
+                  membership: e.target.value,
                 })
               }
             />
-            Female
+            Sapphire Member
           </label>
 
           <label className="booking-radio">
             <input
               type="radio"
-              value="Prefer not to say"
-              checked={booking.gender === "Prefer not to say"}
+              value="Emerald/Ruby"
+              checked={booking.membership === "Emerald/Ruby"}
               onChange={(e) =>
                 setBooking({
                   ...booking,
-                  gender: e.target.value,
+                  membership: e.target.value,
                 })
               }
             />
-            Prefer not to say
+            Emerald / Ruby Member
           </label>
         </div>
 
-        <label>First Visit?</label>
+        <div className="button-row">
+          <button
+            className="booking-back-button"
+            onClick={() => setScreen("recommendations")}
+          >
+            ← Back
+          </button>
 
-        <div className="booking-radio-group">
-          <label className="booking-radio">
-            <input
-              type="radio"
-              value="Yes"
-              checked={booking.firstVisit === "Yes"}
-              onChange={(e) =>
-                setBooking({
-                  ...booking,
-                  firstVisit: e.target.value,
-                })
-              }
-            />
-            Yes
-          </label>
-
-          <label className="booking-radio">
-            <input
-              type="radio"
-              value="No"
-              checked={booking.firstVisit === "No"}
-              onChange={(e) =>
-                setBooking({
-                  ...booking,
-                  firstVisit: e.target.value,
-                })
-              }
-            />
-            No
-          </label>
+          <button
+            className="booking-continue-button"
+            onClick={() => setScreen("addons")}
+            disabled={!booking.name || !booking.membership}
+          >
+            Continue →
+          </button>
         </div>
-
-        <label>Birthday (Optional)</label>
-        <input
-          className="booking-input"
-          type="date"
-          value={booking.birthday}
-          onChange={(e) =>
-            setBooking({
-              ...booking,
-              birthday: e.target.value,
-            })
-          }
-        />
-
-        <label>Occupation (Optional)</label>
-        <input
-          className="booking-input"
-          type="text"
-          placeholder="Occupation"
-          value={booking.occupation}
-          onChange={(e) =>
-            setBooking({
-              ...booking,
-              occupation: e.target.value,
-            })
-          }
-        />
-
-        <button
-          className="continue-button"
-          onClick={() => setScreen("preferences")}
-        >
-          Continue →
-        </button>
       </div>
     </div>
   );

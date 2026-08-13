@@ -1,13 +1,48 @@
-import { useState } from "react";
 import "./TherapistPreferences.css";
 
 type TherapistPreferencesProps = {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
+
+  booking: {
+    treatment: string;
+    duration: string;
+    membership: string;
+    name: string;
+    phone: string;
+    age: string;
+    gender: string;
+    firstVisit: string;
+    birthday: string;
+    occupation: string;
+    therapist: string;
+    pressure: string;
+    addOns: string[];
+  };
+
+  setBooking: React.Dispatch<
+    React.SetStateAction<{
+      treatment: string;
+      duration: string;
+      membership: string;
+      name: string;
+      phone: string;
+      age: string;
+      gender: string;
+      firstVisit: string;
+      birthday: string;
+      occupation: string;
+      therapist: string;
+      pressure: string;
+      addOns: string[];
+    }>
+  >;
 };
 
-function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
-  const [therapist, setTherapist] = useState("");
-  const [pressure, setPressure] = useState("");
+function TherapistPreferences({
+  setScreen,
+  booking,
+  setBooking,
+}: TherapistPreferencesProps) {
   return (
     <div className="preferences-container">
       <h1>Your Preferences</h1>
@@ -24,8 +59,13 @@ function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
             <input
               type="radio"
               value="Female"
-              checked={therapist === "Female"}
-              onChange={(e) => setTherapist(e.target.value)}
+              checked={booking.therapist === "Female"}
+              onChange={(e) =>
+                setBooking({
+                  ...booking,
+                  therapist: e.target.value,
+                })
+              }
             />
             Female
           </label>
@@ -34,20 +74,15 @@ function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
             <input
               type="radio"
               value="Male"
-              checked={therapist === "Male"}
-              onChange={(e) => setTherapist(e.target.value)}
+              checked={booking.therapist === "Male"}
+              onChange={(e) =>
+                setBooking({
+                  ...booking,
+                  therapist: e.target.value,
+                })
+              }
             />
             Male
-          </label>
-
-          <label className="preferences-radio">
-            <input
-              type="radio"
-              value="No Preference"
-              checked={therapist === "No Preference"}
-              onChange={(e) => setTherapist(e.target.value)}
-            />
-            No Preference
           </label>
         </div>
 
@@ -58,8 +93,13 @@ function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
             <input
               type="radio"
               value="Light"
-              checked={pressure === "Light"}
-              onChange={(e) => setPressure(e.target.value)}
+              checked={booking.pressure === "Light"}
+              onChange={(e) =>
+                setBooking({
+                  ...booking,
+                  pressure: e.target.value,
+                })
+              }
             />
             Light
           </label>
@@ -68,8 +108,13 @@ function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
             <input
               type="radio"
               value="Medium"
-              checked={pressure === "Medium"}
-              onChange={(e) => setPressure(e.target.value)}
+              checked={booking.pressure === "Medium"}
+              onChange={(e) =>
+                setBooking({
+                  ...booking,
+                  pressure: e.target.value,
+                })
+              }
             />
             Medium
           </label>
@@ -78,16 +123,33 @@ function TherapistPreferences({ setScreen }: TherapistPreferencesProps) {
             <input
               type="radio"
               value="Firm"
-              checked={pressure === "Firm"}
-              onChange={(e) => setPressure(e.target.value)}
+              checked={booking.pressure === "Firm"}
+              onChange={(e) =>
+                setBooking({
+                  ...booking,
+                  pressure: e.target.value,
+                })
+              }
             />
             Firm
           </label>
         </div>
 
-        <button className="continue-button" onClick={() => setScreen("addons")}>
-          Continue →
-        </button>
+        <div className="button-row">
+          <button
+            className="preferences-back-button"
+            onClick={() => setScreen("booking")}
+          >
+            ← Back
+          </button>
+
+          <button
+            className="preferences-continue-button"
+            onClick={() => setScreen("addons")}
+          >
+            Continue →
+          </button>
+        </div>
       </div>
     </div>
   );

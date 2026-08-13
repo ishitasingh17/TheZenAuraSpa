@@ -1,7 +1,8 @@
+import { useState } from "react";
 import "./RecommendationPage.css";
 import deepTissueImage from "./assets/images/deep-tissue.jpg";
 import sportsRecovery from "./assets/images/sports-recovery.jpeg";
-import swedishMassage from "./assets/images/swedish-therapy.jpg";
+import swedishMassage from "./assets/images/swedish-session.jpeg";
 import backPain from "./assets/images/back-pain.jpeg";
 import hotPotli from "./assets/images/hot-potli.jpeg";
 import hotStone from "./assets/images/hot-stone.jpeg";
@@ -36,19 +37,71 @@ type RecommendationPageProps = {
   selectedReason: string;
   selectedBeautyCategory: string;
   setScreen: React.Dispatch<React.SetStateAction<string>>;
+
+  booking: {
+    treatment: string;
+    duration: string;
+    membership: string;
+
+    pricing: {
+      duration: string;
+      guest: number;
+      sapphire: number;
+      emeraldRuby: number;
+    }[];
+
+    name: string;
+    addOns: string[];
+  };
+
+  setBooking: React.Dispatch<
+    React.SetStateAction<{
+      treatment: string;
+      duration: string;
+      membership: string;
+
+      pricing: {
+        duration: string;
+        guest: number;
+        sapphire: number;
+        emeraldRuby: number;
+      }[];
+
+      name: string;
+      addOns: string[];
+    }>
+  >;
 };
 
 function RecommendationPage({
   selectedReason,
   selectedBeautyCategory,
   setScreen,
+  booking,
+  setBooking,
 }: RecommendationPageProps) {
-  const recommendations = {
+  type Pricing = {
+    duration: string;
+    guest: number;
+    sapphire: number;
+    emeraldRuby: number;
+  };
+
+  type Treatment = {
+    name: string;
+    image: string;
+    description: string;
+    pricing: Pricing[];
+    section?: string;
+  };
+
+  const recommendations: Record<string, Treatment[]> = {
     "Pain Relief": [
       {
         name: "Deep Tissue Massage with Rosemary and Marjoram",
         image: deepTissueImage,
-        description: "Targets muscle tension and chronic pain.",
+        description:
+          "This therapeutic massage uses slow strokes and deep pressure to realign deep muscle layers, releasing chronic stress and pain. It features an anti-inflammatory, pain-relieving oil blend of rosemary and marjoram.",
 
         pricing: [
           {
@@ -70,7 +123,7 @@ function RecommendationPage({
         name: "Sports Recovery Massage",
         image: sportsRecovery,
         description:
-          "Designed for active individuals and post-workout recovery.",
+          "This sports recovery massage targets active bodies and tired muscles. It uses deep-tissue work and assisted stretches to relieve soreness, reduce stiffness, and speed up recovery. The therapy improves circulation and restores balance so you can return to training stronger and lighter.",
         pricing: [
           {
             duration: "60 min",
@@ -89,7 +142,8 @@ function RecommendationPage({
       {
         name: "Swedish Massage with Wintergreen and Eucalyptus",
         image: swedishMassage,
-        description: "A gentle massage that promotes relaxation.",
+        description:
+          "Performed using Swedish techniques using a pain relieving oil blend the massage is best to give you relief from muscular pain. The oil blend contains Wintergreen and Eucalyptus which are known for their topical pain relief properties.",
         pricing: [
           {
             duration: "60 min",
@@ -109,7 +163,8 @@ function RecommendationPage({
       {
         name: "Back Massage With Wintergreen & Eucalyptus",
         image: backPain,
-        description: "A gentle massage that promotes relaxation.",
+        description:
+          "This Swedish back massage uses slow, firm strokes to immediately reduce muscular stress and pain. Perfect for desk jobs, it features a pain-relieving wintergreen and eucalyptus oil blend.",
         pricing: [
           {
             duration: "30 min",
@@ -124,7 +179,7 @@ function RecommendationPage({
         name: "Massage with Hot Potli",
         image: hotPotli,
         description:
-          "Performed using few steps of Swedish technique and an Ayurvedic Potli, this massage is very helpful in reducing back pain or pain in the calves.",
+          "Using Swedish techniques and a heated Ayurvedic potli, this massage reduces back or calf pain. The hot potli contains wheat and camphor oil to relieve chronic pain. Choose between a back or a foot and calf treatment.",
         pricing: [
           {
             duration: "45 min",
@@ -139,7 +194,7 @@ function RecommendationPage({
         name: "Hot Stone Massage With Wintergreen & Eucalyptus",
         image: hotStone,
         description:
-          "A hot stone massage uses smooth, heated stones and oils placed on your body's acupressure points to perform relaxing massage strokes.",
+          "This hot stone massage uses smooth, heated stones placed on multiple acupressure points and gliding strokes to deeply relax the body and mind. It features a pain-relieving oil blend of wintergreen and eucalyptus.",
         pricing: [
           {
             duration: "60 min",
@@ -248,7 +303,7 @@ function RecommendationPage({
         name: "Foot Reflexology",
         image: footReflex,
         description:
-          "This treatment uses sesame oil for foot acupressure and calf massage to heal sore muscles and remove tiredness.",
+          "This sesame oil foot and calf massage uses acupressure to heal sore muscles, relieve pain, and remove foot tiredness.",
         pricing: [
           {
             duration: "30 min",
@@ -260,10 +315,10 @@ function RecommendationPage({
       },
 
       {
-        name: "Head and Shoulder Massage",
+        name: "Head & Shoulder Massage",
         image: shoulderMassage,
         description:
-          "This Ayurvedic Indian head massage uses herbal oils like Salparni and Myrobalan to relieve neck, shoulder, and head tension while boosting brain blood flow",
+          "This Ayurvedic herbal oil massage uses traditional Indian techniques to relieve neck, head, and shoulder tension while boosting brain blood flow. It is ideal for long hours of computer work.",
         pricing: [
           {
             duration: "30 min",
@@ -358,7 +413,7 @@ function RecommendationPage({
         name: "Head & Shoulder Massage",
         image: shoulderMassage,
         description:
-          "Relieves tension and stiffness in the neck and shoulders caused by long working hours.",
+          "This Ayurvedic herbal oil massage uses traditional Indian techniques to relieve neck, head, and shoulder tension while boosting brain blood flow. It is ideal for long hours of computer work.",
         pricing: [
           {
             duration: "30 min",
@@ -369,10 +424,10 @@ function RecommendationPage({
         ],
       },
       {
-        name: "Deep Tissue Massage",
+        name: "Deep Tissue Massage with Rosemary and Marjoram",
         image: deepTissueImage,
         description:
-          "Targets deep muscle tension and helps relieve chronic pain.",
+          "This therapeutic massage uses slow strokes and deep pressure to realign deep muscle layers, releasing chronic stress and pain. It features an anti-inflammatory, pain-relieving oil blend of rosemary and marjoram.",
         pricing: [
           {
             duration: "60 min",
@@ -392,7 +447,7 @@ function RecommendationPage({
         name: "Foot Reflexology",
         image: footReflex,
         description:
-          "Stimulates pressure points to improve circulation and reduce stress.",
+          "This sesame oil foot and calf massage uses acupressure to heal sore muscles, relieve pain, and remove foot tiredness.",
         pricing: [
           {
             duration: "30 min",
@@ -409,7 +464,7 @@ function RecommendationPage({
         name: "Foot Reflexology",
         image: footReflex,
         description:
-          "Relieves tired feet, improves circulation, and refreshes the body after travel.",
+          "This sesame oil foot and calf massage uses acupressure to heal sore muscles, relieve pain, and remove foot tiredness.",
 
         pricing: [
           {
@@ -421,10 +476,10 @@ function RecommendationPage({
         ],
       },
       {
-        name: "Swedish Massage",
+        name: "Swedish Massage with Wintergreen & Eucalyptus",
         image: swedishMassage,
         description:
-          "A gentle full-body massage that eases muscle tension and promotes relaxation.",
+          "Performed using Swedish techniques using a pain relieving oil blend the massage is best to give you relief from muscular pain. The oil blend contains Wintergreen and Eucalyptus which are known for their topical pain relief properties.",
 
         pricing: [
           {
@@ -462,13 +517,13 @@ function RecommendationPage({
           },
         ],
         description:
-          "Uses calming essential oils to reduce stress and encourage restful sleep.",
+          "This relaxing massage uses slow, gentle pressure and a calming blend of Lavender, Ylang-Ylang, and Mandarin oils to soothe your body, ease anxiety, and relieve mental stress.",
       },
       {
         name: "Rejuvenating Aromatherapy Massage With Cinnamon & Basil",
         image: rejuvenateAroma,
         description:
-          "Warm stones relax tense muscles and create a deeply calming experience.",
+          "This relaxing massage applies slow, moderate pressure to ease physical tension. Inhaling and absorbing the cinnamon and basil essential oils stimulates the mind, boosts circulation, and leaves you feeling completely rejuvenated and energized.",
 
         pricing: [
           {
@@ -489,7 +544,7 @@ function RecommendationPage({
         name: "Hot Stone Massage with Wintergreen & Eucalyptus",
         image: hotStone,
         description:
-          "Relieves stress and promotes relaxation to help improve sleep quality.",
+          "This hot stone massage uses smooth, heated stones placed on multiple acupressure points and gliding strokes to deeply relax the body and mind. It features a pain-relieving oil blend of wintergreen and eucalyptus.",
 
         pricing: [
           {
@@ -513,7 +568,7 @@ function RecommendationPage({
         name: "Couple's Spa Retreat",
         image: coupleSpa,
         description:
-          "A Swedish Massage and a Head & Shoulder Massage for one person combined with a Calming Aromatherapy Massage and a Foot Reflexology for the other",
+          "This couples package combines a Swedish and Head & Shoulder massage for one person with a Calming Aromatherapy Massage and Foot Reflexology for the other.",
         pricing: [
           {
             duration: "90 min",
@@ -527,7 +582,7 @@ function RecommendationPage({
         name: "Ladies Spa Retreat",
         image: ladiesRetreat,
         description:
-          "Calming/ Rejuvenating Aromatherapy Massage; Coffee Cane Sugar Body Scrub and a Moisturizing Vit C Facial",
+          "This package combines a Swedish and head & shoulder massage for one person with a calming or rejuvenating aromatherapy massage, coffee cane sugar body scrub, and moisturizing Vitamin C facial for the other.",
         pricing: [
           {
             duration: "2hr 30 min",
@@ -541,7 +596,7 @@ function RecommendationPage({
         name: "Gentlemen's Spa Retreat",
         image: menSpa,
         description:
-          "Swedish with Wintergreen & Eucalyptus Oil Blend; Head Neck Shoulder Massage and a Moisturizing Vit C Facial",
+          "This package pairs a Swedish massage using a wintergreen and eucalyptus oil blend for one person with a head and shoulder massage and a moisturizing Vitamin C facial for the other.",
         pricing: [
           {
             duration: "90 min",
@@ -750,7 +805,7 @@ function RecommendationPage({
       },
       {
         name: "Swedish Massage with Pain Relief Eucalyptus Balm",
-        image: eucalypMassage,
+        image: swedishMassage,
         description:
           "A pain-relieving Swedish Massage using a warming after sport & work out balm to soothe tired muscles as well as reduce aches & pain. The balm contains Eucalyptus & Rosemary which warm the muscles & increase blood circulation.",
         pricing: [
@@ -817,6 +872,10 @@ function RecommendationPage({
   const treatements =
     recommendations[category as keyof typeof recommendations] || [];
 
+  const [selectedDurations, setSelectedDurations] = useState<
+    Record<string, string>
+  >({});
+
   return (
     <div className="recommendation-page">
       <h2>{category}</h2>
@@ -829,21 +888,13 @@ function RecommendationPage({
         </div>
       )}
 
-      {category === "Body Scrubs & Wraps" && (
-        <div className="category-description">
-          <h3>
-            Choose from our body scrubs and wraps to exfoliate, nourish, and
-            rejuvenate your skin.
-          </h3>
-        </div>
-      )}
-
       <div className="treatment-list">
         {treatements.map((treatment, index) => (
           <div key={treatment.name}>
             {category === "Body Scrubs & Wraps" &&
+              treatment.section &&
               (index === 0 ||
-                treatment.section !== treatements[index - 1].section) && (
+                treatment.section !== treatements[index - 1]?.section) && (
                 <h2 className="section-heading">
                   {treatment.section.charAt(0).toUpperCase() +
                     treatment.section.slice(1)}
@@ -907,15 +958,57 @@ function RecommendationPage({
                 </tbody>
               </table>
 
+              <div className="duration-selector">
+                <label>Select Duration:</label>
+
+                <select
+                  value={
+                    selectedDurations[treatment.name] ||
+                    treatment.pricing[0].duration
+                  }
+                  onChange={(e) =>
+                    setSelectedDurations({
+                      ...selectedDurations,
+                      [treatment.name]: e.target.value,
+                    })
+                  }
+                >
+                  {treatment.pricing.map((option) => (
+                    <option key={option.duration} value={option.duration}>
+                      {option.duration}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
               <button
                 className="book-button"
-                onClick={() => setScreen("booking")}
+                onClick={() => {
+                  const selectedDuration =
+                    selectedDurations[treatment.name] ||
+                    treatment.pricing[0].duration;
+
+                  setBooking({
+                    ...booking,
+                    treatment: treatment.name,
+                    duration: selectedDuration,
+                    pricing: treatment.pricing,
+                  });
+
+                  setScreen("booking");
+                }}
               >
                 Book Now
               </button>
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="button-row">
+        <button className="back-button" onClick={() => setScreen("services")}>
+          ← Back
+        </button>
       </div>
     </div>
   );

@@ -4,8 +4,10 @@ import { useState } from "react";
 import ServiceSelection from "./ServiceSelection";
 import RecommendationPage from "./RecommendationPage";
 import BookingDetails from "./BookingDetails";
-import TherapistPreferences from "./TherapistPreferences";
 import AddOns from "./Addons";
+import PilgrimFacials from "./PilgrimFacials";
+import Summary from "./Summary";
+import ConfirmationPage from "./ConfirmationPage";
 
 function App() {
   const [screen, setScreen] = useState("welcome");
@@ -17,16 +19,14 @@ function App() {
     duration: "",
     membership: "",
 
-    name: "",
-    phone: "",
-    age: "",
-    gender: "",
-    firstVisit: "",
-    birthday: "",
-    occupation: "",
+    pricing: [] as {
+      duration: string;
+      guest: number;
+      sapphire: number;
+      emeraldRuby: number;
+    }[],
 
-    therapist: "",
-    pressure: "",
+    name: "",
 
     addOns: [] as string[],
   });
@@ -41,6 +41,7 @@ function App() {
         setScreen={setScreen}
         selectedReason={selectedReason}
         setSelectedReason={setSelectedReason}
+        setSelectedBeautyCategory={setSelectedBeautyCategory}
       />
     );
   }
@@ -60,6 +61,8 @@ function App() {
         selectedReason={selectedReason}
         selectedBeautyCategory={selectedBeautyCategory}
         setScreen={setScreen}
+        booking={booking}
+        setBooking={setBooking}
       />
     );
   }
@@ -74,9 +77,21 @@ function App() {
     );
   }
 
-  if (screen === "preferences") {
+  if (screen === "addons") {
     return (
-      <TherapistPreferences
+      <AddOns
+        setScreen={setScreen}
+        booking={booking}
+        setBooking={setBooking}
+        selectedReason={selectedReason}
+        selectedBeautyCategory={selectedBeautyCategory}
+      />
+    );
+  }
+
+  if (screen === "pilgrimFacials") {
+    return (
+      <PilgrimFacials
         setScreen={setScreen}
         booking={booking}
         setBooking={setBooking}
@@ -84,10 +99,19 @@ function App() {
     );
   }
 
-  if (screen === "addons") {
-    return <AddOns setScreen={setScreen} />;
+  if (screen === "summary") {
+    return <Summary booking={booking} setScreen={setScreen} />;
   }
 
+  if (screen === "confirmation") {
+    return (
+      <ConfirmationPage
+        setScreen={setScreen}
+        booking={booking}
+        setBooking={setBooking}
+      />
+    );
+  }
   return null;
 }
 

@@ -43,7 +43,7 @@ function ServiceSelection({
       <h2 className="service-title">What brings you here today?</h2>
 
       <p className="service-subtitle">
-        Choose one or more reasons so we can recommend the perfect treatement.
+        Select your primary focus so we can curate your perfect treatment.
       </p>
 
       <div className="reasons-grid">

@@ -1,5 +1,3 @@
-//import Message from "./Message";
-// import QualityList from "./SpaSubtitle";
 import "./WelcomeScreen.css";
 import { GiLotus } from "react-icons/gi";
 
@@ -10,34 +8,75 @@ type WelcomeScreenProps = {
 function WelcomeScreen({ setScreen }: WelcomeScreenProps) {
   return (
     <div className="welcome-screen">
-      <div className="welcome-spa">
-        <p className="welcome-label">WELCOME TO</p>
-        <h1 className="spa-title">Zen Aura Spa</h1>
-        <h2 className="spa-subtitle">Bengaluru's Largest Chain of Day Spas</h2>
+      {/* LEFT CONTENT */}
+      <div className="welcome-content">
+        <div className="logo-section">
+          <img
+            src="/zen-aura-logo.png"
+            alt="The Zen Aura Spa"
+            className="zen-aura-logo"
+          />
 
-        <div className="features">
-          <div>🌿 Professional Therapists</div>
-          <div>🌿 Affordable Packages</div>
-          <div>🌿 Same Gender Therapists</div>
+          <h1 className="spa-title">The Zen Aura Spa</h1>
+
+          <p className="logo-tagline">
+            RELAX <span>•</span> REJUVENATE <span>•</span> REBALANCE
+          </p>
         </div>
 
+        <div className="welcome-divider"></div>
+
+        <p className="welcome-label">WELCOME TO</p>
+
+        <h2 className="hero-title">
+          Your Personalized
+          <br />
+          Spa Experience
+        </h2>
+
         <p className="spa-description">
-          Step into a world of relaxation and healing. Our expert therapists and
-          soothing therapies are designed to rejuvenate your mind, body and
-          soul.
+          Discover treatments carefully tailored to your wellness goals. Our
+          short consultation helps us recommend the most suitable spa experience
+          for you.
         </p>
+
+        <div className="features">
+          <div className="feature-item">
+            <GiLotus />
+            <span>Expert Therapists</span>
+          </div>
+
+          <div className="feature-item">
+            <GiLotus />
+            <span>Personalized Treatments</span>
+          </div>
+
+          <div className="feature-item">
+            <GiLotus />
+            <span>Premium Experience</span>
+          </div>
+        </div>
 
         <button
           className="start-consultation"
           onClick={() => setScreen("services")}
         >
-          Start Consultation
+          Begin Your Consultation
           <span>→</span>
         </button>
 
-        <div className="trust-info">
-          <span>⭐ 4.8/5 from 2,000+ happy guests</span>
-          <span>📍8 Locations Across Bengaluru</span>
+        <p className="consultation-note">Takes approximately 2–3 minutes</p>
+      </div>
+
+      {/* RIGHT IMAGE */}
+      <div className="welcome-image">
+        <img src="/spa-bg.jpeg" alt="Zen Aura Spa" />
+
+        <div className="image-overlay"></div>
+
+        <div className="image-caption">
+          <span>YOUR WELLNESS JOURNEY</span>
+          <p>Begins with you.</p>
         </div>
       </div>
     </div>

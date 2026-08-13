@@ -1,13 +1,53 @@
-import { useState } from "react";
 import "./AddOns.css";
 
 type AddOnsProps = {
   setScreen: React.Dispatch<React.SetStateAction<string>>;
+
+  selectedReason: string;
+  selectedBeautyCategory: string;
+
+  booking: {
+    treatment: string;
+    duration: string;
+    membership: string;
+
+    pricing: {
+      duration: string;
+      guest: number;
+      sapphire: number;
+      emeraldRuby: number;
+    }[];
+
+    name: string;
+    addOns: string[];
+  };
+
+  setBooking: React.Dispatch<
+    React.SetStateAction<{
+      treatment: string;
+      duration: string;
+      membership: string;
+
+      pricing: {
+        duration: string;
+        guest: number;
+        sapphire: number;
+        emeraldRuby: number;
+      }[];
+
+      name: string;
+      addOns: string[];
+    }>
+  >;
 };
 
-function AddOns({ setScreen }: AddOnsProps) {
-  const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
-
+function AddOns({
+  setScreen,
+  booking,
+  setBooking,
+  selectedReason,
+  selectedBeautyCategory,
+}: AddOnsProps) {
   const addOns = [
     {
       name: "Head Massage",
@@ -30,7 +70,6 @@ function AddOns({ setScreen }: AddOnsProps) {
       description:
         "Relax tired feet and restore balance with a soothing reflexology treatment.",
     },
-
     {
       name: "Back Scrub",
       duration: "15 min",
@@ -40,11 +79,20 @@ function AddOns({ setScreen }: AddOnsProps) {
     },
   ];
 
+  const isFacialTreatment =
+    selectedReason === "Beauty" && selectedBeautyCategory === "Facials";
+
   const toggleAddOn = (name: string) => {
-    if (selectedAddOns.includes(name)) {
-      setSelectedAddOns(selectedAddOns.filter((item) => item !== name));
+    if (booking.addOns.includes(name)) {
+      setBooking({
+        ...booking,
+        addOns: booking.addOns.filter((item) => item !== name),
+      });
     } else {
-      setSelectedAddOns([...selectedAddOns, name]);
+      setBooking({
+        ...booking,
+        addOns: [...booking.addOns, name],
+      });
     }
   };
 
@@ -62,7 +110,7 @@ function AddOns({ setScreen }: AddOnsProps) {
             <label className="addon-label">
               <input
                 type="checkbox"
-                checked={selectedAddOns.includes(addon.name)}
+                checked={booking.addOns.includes(addon.name)}
                 onChange={() => toggleAddOn(addon.name)}
               />
 
@@ -71,11 +119,9 @@ function AddOns({ setScreen }: AddOnsProps) {
 
                 <p>{addon.description}</p>
 
-                {addon.duration && (
-                  <p className="addon-duration">
-                    <strong>Duration:</strong> {addon.duration}
-                  </p>
-                )}
+                <p className="addon-duration">
+                  <strong>Duration:</strong> {addon.duration}
+                </p>
 
                 <strong className="addon-price">+₹{addon.price}</strong>
               </div>
@@ -85,13 +131,18 @@ function AddOns({ setScreen }: AddOnsProps) {
       </div>
 
       <div className="button-row">
-        <button className="skip-button" onClick={() => setScreen("summary")}>
-          Skip
+        <button
+          className="addons-back-button"
+          onClick={() => setScreen("booking")}
+        >
+          ← Back
         </button>
 
         <button
-          className="continue-button"
-          onClick={() => setScreen("summary")}
+          className="addons-continue-button"
+          onClick={() =>
+            setScreen(isFacialTreatment ? "summary" : "pilgrimFacials")
+          }
         >
           Continue →
         </button>
