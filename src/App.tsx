@@ -41,7 +41,6 @@ function App() {
         setScreen={setScreen}
         selectedReason={selectedReason}
         setSelectedReason={setSelectedReason}
-        setSelectedBeautyCategory={setSelectedBeautyCategory}
       />
     );
   }
